@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            /* margin: auto; */
+            height: 100vh;
+
+        }
+        .container {
+            width: 300px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 25px;
+            background-color: #f9f9f9
+        }
+        #list {
+            width: 150px;
+            border-radius: 5px;
+            padding: 5px;
+            transition: width 0.3s ease
+        }
+        button {
+            width: 100px;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: aquamarine;
+            border: none;
+        }
+        ul{
+            list-style-type: none;
+        }
+        #list:focus {
+            /* border-color: blue; */
+            outline: none;
+            border: 2px solid blue;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>List Addition</h1>
+        
+        <label for="list">Enter List</label><br>
+        <input type="text" name="mylist" id="list" required><br>
+        <button onclick="add()">Add</button>
+        
+        <div>
+            <ul id="listItems">
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let arrayList = [];
+        function add(){
+
+            let listItem = document.getElementById('list').value;
+            arrayList.push(listItem)
+            
+            let ul = document.getElementById('listItems');
+            ul.innerHTML = '';
+
+            for (let i = 0; i < arrayList.length; i++) {
+                let li = document.createElement('li')
+                li.innerText = arrayList[i];
+                ul.appendChild(li);
+                
+            }
+            document.getElementById('list').value = '';
+        }
+        
+    </script>
+</body>
+</html>
